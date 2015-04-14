@@ -10,6 +10,16 @@ Tests on python's socket module.
 
 The system must have listeners for each user connected.
 
+#### The dummy client
+
+For this to work, we need a connection on the other end of this python program. 
+
+	nc localhost 7171
+	
+The above command starts a "netcat" server (at least on ubuntu)
+
+Kill this service to stop the python listener.
+
 ## test_threading.py
 
 Tests on python's threading module
