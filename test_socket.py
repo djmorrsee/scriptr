@@ -13,7 +13,7 @@ def main():
 	while 1:
 		
 		# Loop and read data
-		data = conn.recv(1024)
+		data = conn.recv(1024) # Blocking Call
 		
 		# Connection closed (empty string indicates eof)
 		if data == '':
