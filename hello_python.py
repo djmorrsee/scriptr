@@ -1,4 +1,8 @@
 # This file is here to help you learn how to run python
+# To run, via command line and while in the working directory with this file, run:
+# 	
+# 	python hello_python.py
+# 
 import sys
 
 def main():
