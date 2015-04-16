@@ -5,11 +5,6 @@
 
 # These are single line comments
 
-''' 
-This is a multiline comment, sometimes called a docstring
-
-Python is 'interpreted' one line at a time. In a .py file, every line is read, no boilerplate required
-'''
 
 # Modules are imported via import
 import sys
@@ -40,22 +35,22 @@ while False:
 for i in range(0, 10):
 	print i
 
-'''
-Function syntax is straightforward
-
-def func_name(a, b, c):
-->	body is indented
-	return val
-
-Body of functions are indented, no return or argument types
-'''
+#~ 
+#~ Function syntax is straightforward
+#~ 
+#~ def func_name(a, b, c):
+#~ ->	body is indented
+	#~ return val
+#~ 
+#~ Body of functions are indented, no return or argument types
+#~ 
 def foo(arg): 
 	return arg + 1
 
-'''
-Functions in python are "first class" functions, which means they are 
-treated as variables.
-'''
+#~ 
+#~ Functions in python are "first class" functions, which means they are 
+#~ treated as variables.
+#~ 
 f = foo(4) # Bind result of call to foo(4) to f
 g = foo # Bind the function foo to g (think of it as an alias)
 
