@@ -9,9 +9,9 @@ def hello():
 def path():
 	return "Another URL"
 	
-@app.route("/user/<username>") 
-def user(username):
-	return "Your name is " + str(username)
+@app.route("/user/<first>/<second>/") 
+def user(first, second):
+	return first + second
 	
 if __name__ == "__main__":
 	app.run(host="0.0.0.0")
