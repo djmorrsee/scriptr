@@ -10,7 +10,7 @@ def path():
 	return "Another URL"
 	
 @app.route("/user/<username>") 
-def user():
+def user(username):
 	return "Your name is " + str(username)
 	
 if __name__ == "__main__":
