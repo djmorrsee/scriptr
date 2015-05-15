@@ -1,6 +1,0 @@
-{
-	position: Number,
-	additive: Number (0 or 1),
-	count: Number,
-	characters:String
-}
