@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+	<meta charset="utf-8">
+	<title>Scriptr</title> 
+	<meta name="description" content="">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+		<div class="col-xs-10 col-xs-offset-1" id="main-body">
+			<h1 align="center">Scriptr</h1>
+		</div>
+
+<textarea id='scriptBox' rows="30" cols="150">
+if (youLikeDicks) {
+	bool isGay = true;
+}
+</textarea>
+</body>
+
+<script>
+	var oldVal = $(scriptBox).val();
+	$(scriptBox).on('change keyup paste', function() {
+		var newVal = $(scriptBox).val();
+		if (newVal == oldVal) {
+			return;
+		}
+		console.log(newVal);
+		oldVal = newVal;
+	});
+</script>
+
+</html>
