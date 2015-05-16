@@ -1,7 +1,7 @@
 var assert = require('assert');
 var path = require('path')
 
-var DocumentBuffer = require('../lib/docmanager.js');
+var DocumentBuffer = require('../src/docmanager.js');
 
 
 describe('DocumentBuffer', function () {
