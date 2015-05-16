@@ -1,5 +1,6 @@
 function DocumentBuffer () {
-	this.buffer = [];
+	this.buffer = this.LoadBufferFromFile('buffer-pers.txt');
+	console.log(this.buffer)
 }
 
 DocumentBuffer.prototype.HashBuffer = function () {
@@ -17,7 +18,7 @@ DocumentBuffer.prototype.AddChars = function (pos, chars) {
 	})
 	
 	if(!valid) {
-		throw new Error('Invalid character');
+		return false;
 	}
 	
 	// Normalize to avoid negative range issues
@@ -26,6 +27,7 @@ DocumentBuffer.prototype.AddChars = function (pos, chars) {
 	chars.split('').forEach(function(char) {
 		buff.splice(pos++, 0, char);
 	});
+	return true;
 };
 
 DocumentBuffer.prototype.RemoveChars = function (start, count) {
@@ -41,8 +43,24 @@ DocumentBuffer.prototype._ValidChar = function (char) {
 	return (32 <= val && val <= 126) || val == 10;
 };
 
+DocumentBuffer.prototype.SaveBufferToFile = function(filename) {
+	var fs = require('fs')
+	fs.writeFile(filename, this.GetBufferAsString(), function(err) {
+		if(err) {
+			console.log('Error writing to file ' + filename);
+		}
+	});
+};
+
+DocumentBuffer.prototype.LoadBufferFromFile = function(filename) {
+	return [];
+}
+
 DocumentBuffer.prototype.GetBufferAsString = function () {
-	return this.buffer.join('');
+	if(this.buffer != null)
+		return this.buffer.join('');
+	else
+		return ''
 };
 
 module.exports = DocumentBuffer

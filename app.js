@@ -15,3 +15,12 @@ app.get('/', function (req, res) {
 var http_server = app.listen(3000, function () {
 	console.log('Listening...');
 });
+
+process.on('exit', function () {
+	console.log('close')
+});
+
+process.on('SIGINT', function () {
+
+	process.exit()
+});

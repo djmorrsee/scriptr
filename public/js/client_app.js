@@ -1,5 +1,6 @@
 var Scriptr = function () {
-	this.socket = new ScriptrSocket('djmorrsee.me', '3555');
+	this.socket = new ScriptrSocket('127.0.0.1', '3555');
+	//~ this.socket = new ScriptrSocket('djmorrsee.me', '3555');
 	this.textBox;
 	this.textBoxValue;
 }

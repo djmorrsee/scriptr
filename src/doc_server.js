@@ -4,18 +4,23 @@ function DocumentServer (_port) {
 	
 	var connections = [];
 	
-	var document = this.document = new doc();
+	this.document = new doc();
 	
 	this.doc_server = new wss({port:_port});
 	
 	this.doc_server.on('connection', function (socket) {
 		
 		// Sync Current Buffer (will need to special case this)
-		var obj = new Object();
-		obj.RESET = true;
-		obj.buffer = document.GetBufferAsString();
-		socket.send(JSON.stringify(obj));
-	
+		var reset = function (conn) {
+			var obj = new Object();
+			obj.RESET = true;
+			obj.buffer = document.GetBufferAsString();
+			
+			conn.send(JSON.stringify(obj));
+			
+		}
+		reset(socket);
+		
 		// Add New Connection
 		connections.push(socket);
 		
@@ -31,15 +36,29 @@ function DocumentServer (_port) {
 			var obj = JSON.parse(message);
 			
 			if(obj.additive) {
-				document.AddChars(obj.position, obj.chars);
-				console.log(document.GetBufferAsString());
+				if (!document.AddChars(obj.position, obj.chars)) {
+					// Error Adding (Bad Characters)
+					console.log('desync');
+					connections.forEach(function (conn) {
+						reset(conn);
+					});
+					return;
+				}
+				//~ console.log(document.GetBufferAsString());
 			} else {
 				document.RemoveChars(obj.position, obj.count);
-				console.log(document.GetBufferAsString());
+				//~ console.log(document.GetBufferAsString());
 			}
 			
 			// Check hash
-			require('assert').equal(document.HashBuffer(), obj.hash);
+			if(document.HashBuffer() !== obj.hash) {
+				// Became unsynced, the big cause of this is simultaneous edits travelling across the line
+				console.log('desync');
+				connections.forEach(function (conn) {
+					reset(conn);
+				});
+				return;
+			}
 			
 			// Broadcast
 			connections.forEach(function(conn) {
