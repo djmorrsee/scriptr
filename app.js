@@ -13,5 +13,5 @@ app.get('/', function (req, res) {
 });
 
 var http_server = app.listen(3000, function () {
-	console.log('listening...');
+	console.log('Listening...');
 });

@@ -9,15 +9,24 @@ function DocumentServer (_port) {
 	this.doc_server = new wss({port:_port});
 	
 	this.doc_server.on('connection', function (socket) {
-		socket.send(document.GetBufferAsString());
+		
+		// Sync Current Buffer (will need to special case this)
+		var obj = new Object();
+		obj.RESET = true;
+		obj.buffer = document.GetBufferAsString();
+		socket.send(JSON.stringify(obj));
+	
+		// Add New Connection
 		connections.push(socket);
 		
+		// Remove Socket from Connections
 		socket.on('close', function () {
 			connections = connections.filter(function (conn) {
 				return conn != socket
 			});
 		});
 		
+		// Received Message From a Client
 		socket.on('message', function (message) {
 			var obj = JSON.parse(message);
 			
@@ -30,9 +39,9 @@ function DocumentServer (_port) {
 			}
 			
 			// Check hash
+			require('assert').equal(document.HashBuffer(), obj.hash);
 			
 			// Broadcast
-			
 			connections.forEach(function(conn) {
 				if (conn != socket) 
 					conn.send(message);

@@ -3,7 +3,7 @@ function DocumentBuffer () {
 }
 
 DocumentBuffer.prototype.HashBuffer = function () {
-	return require('crypto').createHash('md5').update(this.buffer.join('')).digest('hex');
+	return require('xxhashjs')(this.buffer.join(''), 0xABCD).toString(16)
 };
 
 DocumentBuffer.prototype.AddChars = function (pos, chars) {
@@ -38,7 +38,7 @@ DocumentBuffer.prototype.RemoveChars = function (start, count) {
 
 DocumentBuffer.prototype._ValidChar = function (char) {
 	var val = char.charCodeAt(0);
-	return 32 <= val && val <= 126;
+	return (32 <= val && val <= 126) || val == 10;
 };
 
 DocumentBuffer.prototype.GetBufferAsString = function () {

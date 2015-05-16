@@ -1,7 +1,7 @@
 var assert = require('assert');
 var path = require('path')
 
-var DocumentServer = require('../src/documentserver.js');
+var DocumentServer = require('../src/doc_server.js');
 
 describe('DocumentServer', function () {
 	it('Should start a WSS instance on initialization', function () {
