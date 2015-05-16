@@ -6,12 +6,13 @@ socket.onopen = function () {
 
 socket.onmessage = function (message) {
 	console.log(message.data);
+	receiveChange('a', 0, 1, 1);
 };
 
 function SendMessage(position, additive, count, chars, hash) {
-	
 	if (chars.length !== count) {
-		return 'err'
+		console.log(count)
+		return
 	}
 	
 	var obj = new Object();
@@ -30,6 +31,5 @@ function CloseSocket() {
 }
 
 $(window).unload(function(event) {
-	SendMessage(0, 1, 1, 'a');
 	CloseSocket();
 });

@@ -10,9 +10,15 @@ function DocumentServer (_port) {
 	
 	this.doc_server.on('connection', function (socket) {
 		socket.send(document.GetBufferAsString());
+		connections.push(socket);
+		
+		socket.on('close', function () {
+			connections = connections.filter(function (conn) {
+				return conn != socket
+			});
+		});
 		
 		socket.on('message', function (message) {
-			
 			var obj = JSON.parse(message);
 			
 			if(obj.additive) {
@@ -22,6 +28,15 @@ function DocumentServer (_port) {
 				document.RemoveChars(obj.position, obj.count);
 				console.log(document.GetBufferAsString());
 			}
+			
+			// Check hash
+			
+			// Broadcast
+			
+			connections.forEach(function(conn) {
+				if (conn != socket) 
+					conn.send(message);
+			});
 		});
 	});	
 }
