@@ -1,11 +1,11 @@
 var socket = new WebSocket('ws://127.0.0.1:3555');
 
 socket.onopen = function () {
-	socket.send("ACK");
+	//~ socket.send("ACK");
 };
 
 socket.onmessage = function (message) {
-	console.log(message);
+	console.log(message.data);
 };
 
 function SendMessage(position, additive, count, chars, hash) {

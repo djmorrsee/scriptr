@@ -41,4 +41,8 @@ DocumentBuffer.prototype._ValidChar = function (char) {
 	return 32 <= val && val <= 126;
 };
 
+DocumentBuffer.prototype.GetBufferAsString = function () {
+	return this.buffer.join('');
+};
+
 module.exports = DocumentBuffer
