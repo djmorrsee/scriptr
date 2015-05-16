@@ -22,9 +22,8 @@
 		</div>
 
 <textarea id='scriptBox' rows="30" cols="150">
-if (youLikeDicks) {
-	bool isGay = true;
-}
+</textarea>
+<textarea id='scriptBox2' rows="30" cols="150">
 </textarea>
 </body>
 
@@ -35,9 +34,71 @@ if (youLikeDicks) {
 		if (newVal == oldVal) {
 			return;
 		}
-		console.log(newVal);
+		//console.log(newVal);
+		var oldString = oldVal.split('');
+		var newString = newVal.split('');
+
+		var isDelete = false;
+		
+		var shortString = oldString;
+		var longString = newString;
+
+		if (oldString.length > newString.length) {
+			isDelete = true
+			shortString = newString;
+			longString = oldString;
+		}
+
+		var i = 0;
+		for (i = 0; i < shortString.length; i++) {
+			if (longString[i] != shortString[i]) {
+				break;
+			}
+		}
+		var changeStart = i;
+		var changeEnd = 0;
+		for (var x = 0; x < longString.length; x++) {
+			if (longString[longString.length-x] != shortString[shortString.length-x]) {
+				changeEnd = (longString.length-x)+1;
+				break;
+			}
+		}
+		
+		if (changeStart > changeEnd) {
+			var temp = changeStart;
+			changeStart = changeEnd;
+			changeEnd = temp;
+		}
+		if (changeEnd == changeStart)
+			changeEnd++;
+			
+		var finalArray = longString.slice(changeStart, changeEnd);
+		var changed = finalArray.join('');
+		//console.log(changed);
+		//console.log(changeStart);
+		//console.log(changeEnd);
+		
+		if (!isDelete)
+			document.getElementById("scriptBox2").value = "added: " + changed;
+		else
+			document.getElementById("scriptBox2").value = "deleted: " + changed;
+			
+		//receiveChange(changed, changeStart, changeEnd, isDelete);
+
 		oldVal = newVal;
 	});
+	
+function receiveChange(changedString, start, end, isDelete) {
+    var current = $(scriptBox2).val();
+    var finalText = "";
+    if (!isDelete) {
+        finalText = current.slice(start, end) + changedString + current.slice(end);
+    } else {
+        finalText = $(scriptBox).val();
+    }
+    document.getElementById("scriptBox2").value = finalText;
+}
+
 </script>
 
 </html>
