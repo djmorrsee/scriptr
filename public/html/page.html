@@ -74,27 +74,39 @@
 			
 		var finalArray = longString.slice(changeStart, changeEnd);
 		var changed = finalArray.join('');
-		//console.log(changed);
-		//console.log(changeStart);
-		//console.log(changeEnd);
-		
-		if (!isDelete)
-			document.getElementById("scriptBox2").value = "added: " + changed;
-		else
-			document.getElementById("scriptBox2").value = "deleted: " + changed;
+		if (finalArray[0] == " " && finalArray[finalArray.length-1] != " " && changed.charAt(0) != " ")
+			changed = " " + changed;
+		else if (finalArray[finalArray.length-1] == " " && finalArray[0] != " " && changed.charAt(finalArray.length-1) != " ")
+			changed = changed + " ";
 			
-		//receiveChange(changed, changeStart, changeEnd, isDelete);
+		debug (changed, changeStart, changeEnd, isDelete);
+			
+		receiveChange(changed, changeStart, changeEnd, isDelete);
 
 		oldVal = newVal;
+		
 	});
+function debug (text, start, end, isDelete) {
+		if (!isDelete) {
+			//document.getElementById("scriptBox2").value = "added: " + changed;
+			console.log("added:" + text);
+		}
+		else {
+			//document.getElementById("scriptBox2").value = "deleted: " + changed;
+			console.log("deleted:" + text);
+		}
+
+		//console.log(changeStart);
+		//console.log(changeEnd);
+}
 	
 function receiveChange(changedString, start, end, isDelete) {
     var current = $(scriptBox2).val();
     var finalText = "";
     if (!isDelete) {
-        finalText = current.slice(start, end) + changedString + current.slice(end);
+        finalText = current.slice(0, start) + changedString + current.slice(start);
     } else {
-        finalText = $(scriptBox).val();
+        finalText = current.slice(0, start) + current.slice(end);
     }
     document.getElementById("scriptBox2").value = finalText;
 }
