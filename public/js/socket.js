@@ -8,19 +8,28 @@ var ScriptrSocket = function (host, port) {
 	
 };
 
-ScriptrSocket.prototype.SendMessage = function(position, additive, count, chars, hash) {
+ScriptrSocket.prototype.SendChatMessage = function(message) {
+	
+};
+
+ScriptrSocket.prototype.SendEditMessage = function(position, additive, count, chars, hash) {
 	if (chars.length !== count) {
 		console.log(count)
 		return
 	}
 
+	var body = new Object();
+	
+	body.position = position;
+	body.additive = additive > 0 ? 1 : 0;
+	body.count = count;
+	body.chars = chars;
+	body.hash = hash;
+
 	var obj = new Object();
 	
-	obj.position = position;
-	obj.additive = additive > 0 ? 1 : 0;
-	obj.count = count;
-	obj.chars = chars;
-	obj.hash = hash;
+	obj.type = 1
+	obj.body = body
 	
 	this.socket.send(JSON.stringify(obj));
 

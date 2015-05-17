@@ -1,7 +1,24 @@
+// Types
+// 0 = Sync
+// 1 = Document Edit
+// 2 = Chat Message
+
 {
+	type:Number (0, 1, 2), 
+	body: SYNC_BODY || DOC_MESSAGE || CHAT_MESSAGE
+}
+
+SYNC_BODY = String
+
+CHAT_MESSAGE = String
+
+DOC_MESSAGE = {
+
 	position: Number,
 	additive: Number (0 or 1),
 	count: Number,
 	characters:String,
 	hash:String
+
 }
+
