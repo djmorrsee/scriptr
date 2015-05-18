@@ -24,16 +24,18 @@ body {
 	outline:none;
 }
 
+/* Header */
 #header-row {
 	background-color: #560B12;
 }
 
 #header-row h1 {
 	color:white;
-	font-size: 28px;
-	margin:10px 0 10px 10px;
+	font-size: 4vw;
+	margin:10px;
 }
 
+/* Content */
 #content-row {
 	height:100%;
 }
@@ -46,12 +48,14 @@ body {
 }
 
 #main-body h3 {
+	font-size: 2vw;
 	padding-bottom: 10px;
 	margin: 10px 0px 0px 0px;
 	border-bottom: 1px solid black;
 }
 
-#input-box {
+#document-box {
+	color:black;
 	background-color: #eee;
 
 	height:100%;
@@ -63,7 +67,7 @@ body {
 
 }
 
-#input-box:focus {
+#document-box:focus {
 	outline:none !important;
 	border:none;
 }
@@ -74,8 +78,20 @@ body {
 	background-color: #4A0F21;
 }
 
-.chat-box {
+#stuff-box {
+}
+
+#stuff-box h1 {
+	margin: 10px 0 0 0;
+	padding: 0 0 10px 0;
+
+	border-bottom: 1px solid black;
+
 	color:white;
+	font-size: 2vw;
+}
+
+#chat-box {
 
 	position: absolute;
 	bottom:0px;
@@ -83,7 +99,19 @@ body {
 	left: 0px;
 	margin: 0;
 
-	height:30%;
+	height:50%;
 	background-color: #3F1010;
+
+}
+
+#chat-box h1 {
+	margin: 10px 0 0 0;
+	padding: 0 0 10px 0;
+
+	border-bottom: 1px solid black;
+
+
+	color:white;
+	font-size: 2vw;
 
 }

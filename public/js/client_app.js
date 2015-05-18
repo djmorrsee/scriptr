@@ -28,12 +28,14 @@ $(document).ready (function () {
 			break;
 		case 1: // Edit
 			var current = scriptr.doc.textBoxValue = scriptr.doc.textBox.val();
-
+			var new_text
 			if (data.body.additive) {
-				scriptr.doc.textBox.val(current.slice(0, data.body.position) + data.body.chars + current.slice(data.body.position))
+				new_text = current.slice(0, data.body.position) + data.body.chars + current.slice(data.body.position)
 			} else {
-				scriptr.doc.textBox.val(current.slice(0, data.body.position) + current.slice(data.body.position + data.body.count))
+				new_text = current.slice(0, data.body.position) + current.slice(data.body.position + data.body.count)
 			}
+
+			scriptr.doc.SetText(new_text);
 			break;
 		case 2: // Chat
 			break;
