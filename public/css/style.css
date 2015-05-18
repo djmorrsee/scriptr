@@ -1,7 +1,89 @@
-html, body {
-	font-family:Sans-Serif;
+html {
+		min-height: 100%;
+		position: relative;
+		background-color: #1F0000;
+}
+
+body {
+	height:100%;
+}
+
+.container-fluid {
+	position: absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	overflow: hidden;
+}
+
+/* Remove the Editting Border */
+[contenteditable="true"]:active,
+[contenteditable="true"]:focus {
+	border:none;
+	outline:none;
+}
+
+#header-row {
+	background-color: #560B12;
+}
+
+#header-row h1 {
+	color:white;
+	font-size: 28px;
+	margin:10px 0 10px 10px;
+}
+
+#content-row {
+	height:100%;
 }
 
 #main-body {
-	background-color:#ddd;
+	background-color: #ccc;
+	height:100%;
+	padding:0;
+	margin:0;
+}
+
+#main-body h3 {
+	padding-bottom: 10px;
+	margin: 10px 0px 0px 0px;
+	border-bottom: 1px solid black;
+}
+
+#input-box {
+	background-color: #eee;
+
+	height:100%;
+	width:100%;
+
+	padding:2em;
+	border:none;
+	resize:none;
+
+}
+
+#input-box:focus {
+	outline:none !important;
+	border:none;
+}
+
+#side-bar {
+	height:100%;
+	color:white;
+	background-color: #4A0F21;
+}
+
+.chat-box {
+	color:white;
+
+	position: absolute;
+	bottom:0px;
+	right: 0px;
+	left: 0px;
+	margin: 0;
+
+	height:30%;
+	background-color: #3F1010;
+
 }
