@@ -34,7 +34,6 @@ $(document).ready (function () {
 			} else {
 				new_text = current.slice(0, data.body.position) + current.slice(data.body.position + data.body.count)
 			}
-
 			scriptr.doc.SetText(new_text);
 			break;
 		case 2: // Chat

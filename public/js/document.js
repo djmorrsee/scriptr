@@ -1,5 +1,5 @@
 var ScriptrDocument = function (change_callback) {
-  this.textBox = $("#input-box");
+  this.textBox = $("#document-box");
 
   this.textBoxValue = this.textBox.val();
   this.change_callback

@@ -75,10 +75,12 @@ body {
 #side-bar {
 	height:100%;
 	color:white;
+	padding:0;
 	background-color: #4A0F21;
 }
 
 #stuff-box {
+	margin:0;
 }
 
 #stuff-box h1 {
@@ -92,26 +94,35 @@ body {
 }
 
 #chat-box {
+	width: 100%;
 
-	position: absolute;
 	bottom:0px;
 	right: 0px;
 	left: 0px;
 	margin: 0;
 
-	height:50%;
 	background-color: #3F1010;
 
 }
 
 #chat-box h1 {
+
 	margin: 10px 0 0 0;
 	padding: 0 0 10px 0;
 
 	border-bottom: 1px solid black;
 
-
 	color:white;
 	font-size: 2vw;
+
+}
+
+#chat-field {
+	background-color: #aaa;
+}
+
+#chat-input {
+	width: 100%;
+	color:black;
 
 }
