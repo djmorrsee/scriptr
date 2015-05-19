@@ -9,6 +9,7 @@ $(document).ready (function () {
 
 	// Helper Function for Linking Socket and Document
 	var SendEdit = function(changes) {
+		console.log(changes)
 		if (changes) {
 			var hash = XXH(scriptr.doc.textBoxValue, 0xABCD).toString(16);
 			scriptr.socket.SendEditMessage(changes.range[0], changes.additive, changes.range[1] - changes.range[0] + 1, changes.chars, hash);
@@ -27,7 +28,7 @@ $(document).ready (function () {
 			scriptr.doc.SetText(data.body)
 			break;
 		case 1: // Edit
-			var current = scriptr.doc.textBoxValue = scriptr.doc.textBox.val();
+			var current = scriptr.doc.textBoxValue = StripHTML(scriptr.doc.textBox.html());
 			var new_text
 			if (data.body.additive) {
 				new_text = current.slice(0, data.body.position) + data.body.chars + current.slice(data.body.position)

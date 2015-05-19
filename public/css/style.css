@@ -37,6 +37,7 @@ body {
 
 /* Content */
 #content-row {
+	padding:1px;
 	height:100%;
 }
 
