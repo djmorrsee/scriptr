@@ -22,6 +22,9 @@ var http_server = app.listen(3000, function () {
 // Program Exit
 process.on('exit', function () {
 	console.log('close from exit')
+	console.log(doc_server.document.buffer.join(''))
+	doc_server.doc_server.close()
+
 });
 
 process.on('SIGINT', function () {
