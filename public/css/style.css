@@ -20,8 +20,8 @@ body {
 /* Remove the Editting Border */
 [contenteditable="true"]:active,
 [contenteditable="true"]:focus {
-	border:none;
-	outline:none;
+	border:10px solid black;
+	outline:10px solid black;
 }
 
 /* Header */

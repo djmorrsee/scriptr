@@ -1,13 +1,21 @@
 var fs = require ('fs');
 var path = require('path');
 
+var sass_middleware = require('node-sass-middleware')
+
 var doc_server = require('./src/doc_server.js')(3555); // Initializes Server
 var express = require('express');
 var app = express();
 
 
 // Express.js App
-app.use(express.static('public'));
+app.use(sass_middleware({
+	src:__dirname+'/public',
+	dest:__dirname+'/public',
+	debug:true
+}));
+
+app.use(express.static(__dirname + '/public'));
 
 app.get('/', function (req, res) {
 	res.sendfile('index.html');
