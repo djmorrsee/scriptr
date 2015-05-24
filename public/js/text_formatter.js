@@ -1,3 +1,5 @@
+
+
 var _stripDiv = function (buffer) {
   return buffer.replace(/<\/div>$/, '')
 }

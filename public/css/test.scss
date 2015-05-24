@@ -108,6 +108,11 @@ body {
 #document-pane {
   @include shadow(1px, 1px, 3px, 0px, $shadow-alpha-main);
   @include rounded(0.25em, 0.25em, 0.25em, 0.25em);
+
+  white-space: pre;
+  word-wrap: normal;
+
+  overflow:auto;
   border:1px solid black;
 
 	color:black;
@@ -117,10 +122,12 @@ body {
 
   height:60ex;
 
-  &:focus {
-    outline:none !important;
-    border:none;  }
+  resize: none;
 
+}
+
+#document-display {
+  @extend #document-pane;
 }
 
 #side-box {

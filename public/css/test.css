@@ -62,21 +62,22 @@ html {
   padding: 0;
   margin: 0; }
 
-#document-pane {
+#document-pane, #document-display {
   -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.85);
   -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.85);
   box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.85);
   -webkit-border-radius: 0.25em 0.25em 0.25em 0.25em;
   -moz-border-radius: 0.25em 0.25em 0.25em 0.25em;
   border-radius: 0.25em 0.25em 0.25em 0.25em;
+  white-space: pre;
+  word-wrap: normal;
+  overflow: auto;
   border: 1px solid black;
   color: black;
   padding: 1em;
   margin: 0 0.5em;
-  height: 60ex; }
-  #document-pane:focus {
-    outline: none !important;
-    border: none; }
+  height: 60ex;
+  resize: none; }
 
 #side-box {
   padding: 0;
