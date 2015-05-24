@@ -1,6 +1,6 @@
 var Scriptr = function () {
-	// this.socket = new ScriptrSocket('127.0.0.1', '3555');
-	this.socket = new ScriptrSocket('djmorrsee.me', '3555');
+	this.socket = new ScriptrSocket('127.0.0.1', '3555');
+	// this.socket = new ScriptrSocket('djmorrsee.me', '3555');
 
 	this.doc
 	this.chat
@@ -30,14 +30,7 @@ $(document).ready (function () {
 			scriptr.doc.SetText(data.body)
 			break;
 		case 1: // Edit
-			var current = scriptr.doc.textBoxValue = scriptr.doc.textBox.val();
-			var new_text
-			if (data.body.additive) {
-				new_text = current.slice(0, data.body.position) + data.body.chars + current.slice(data.body.position)
-			} else {
-				new_text = current.slice(0, data.body.position) + current.slice(data.body.position + data.body.count)
-			}
-			scriptr.doc.SetText(new_text);
+			scriptr.doc.EditText(data.body);
 			break;
 		case 2: // Chat
 			scriptr.chat.ReceiveMessage(data.body);

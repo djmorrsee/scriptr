@@ -40,9 +40,29 @@ ScriptrDocument.prototype.PrintDocument = function () {
   console.log(this.textBox.val());
 };
 
+ScriptrDocument.prototype.EditText = function (text) {
+
+  console.log(text);
+  var current = this.textBoxValue = this.textBox.val();
+  var cursor_pos = this.textBox[0].selectionStart;
+
+  var new_text
+
+  if (text.additive) {
+    new_text = current.slice(0, text.position) + text.chars + current.slice(text.position)
+  } else {
+    new_text = current.slice(0, text.position) + current.slice(text.position + text.count)
+  }
+
+  this.SetText(new_text);
+
+  this.textBox[0].selectionStart = cursor_pos;
+  this.textBox[0].selectionEnd = cursor_pos;
+}
+
 // Takes in normal string, formats to html
 ScriptrDocument.prototype.SetText = function (text) {
-  console.log($(this.textBox).selectionStart);
+
   this.textBox.val(text);
   this.textBoxValue = text;
 };
