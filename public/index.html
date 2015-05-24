@@ -57,32 +57,35 @@
 
 			<div class="row" id="content-row">
 
-				<!-- Filler -->
+				<!-- Controls -->
 				<div class="col-xs-1" id="control-box">
 					<div id="control-pane">
+						There will be stuff here
 					</div>
 				</div>
 
 				<!-- Main Content -->
 				<div class="col-xs-9" id="main-box">
 
-					<textarea cols="100" rows="100" id="document-pane"></textarea>
-					<!-- <div class="col-xs-5" id="document-display"> Hey </div> -->
+					<div id="document-container">
+						<textarea id="document-pane"></textarea>
+					</div>
 
 				</div>
 
-				<!-- Side Bar -->
+				<!-- Chat Box -->
 				<div class="col-xs-2" id="side-box" align="center">
+					<div id="chat-pane" align="right">
 
-					<div class="row" id="chat-pane">
-						<div id="chat-window" align="left">
-
-						</div>
+						<div id="chat-window" align="left"></div>
 						<input id="chat-input"/>
-						<div>Name</div>
-						<input id="chat-name"/>
-					</div>
 
+						<div id="chat-name-box">
+							<p>Name</p>
+							<input id="chat-name"/>
+						</div>
+
+					</div>
 				</div>
 			</div>
 		</div>

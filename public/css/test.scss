@@ -105,23 +105,24 @@ body {
 	margin:0;
 }
 
+#document-container {
+  margin:0 0.5em;
+}
+
 #document-pane {
   @include shadow(1px, 1px, 3px, 0px, $shadow-alpha-main);
   @include rounded(0.25em, 0.25em, 0.25em, 0.25em);
+  border:1px solid black;
 
   white-space: pre;
   word-wrap: normal;
 
   overflow:auto;
-  border:1px solid black;
+  padding:1ex;
 
 	color:black;
-
-  padding:1em;
-  margin:0 0.5em;
-
+  width:100%;
   height:60ex;
-
   resize: none;
 
 }
@@ -167,7 +168,22 @@ body {
 #chat-input {
   @include rounded(0.25em, 0.25em, 0.25em, 0.25em);
   border:1px solid black;
-  margin-top:0.5em;
+  margin:0.5em 0.5em 0 0.5em;
+  width: 70%;
+}
+
+#chat-name-box {
+  margin:0.5em 0.5em 0 0.5em;
+  width:70%;
+
+  display: inline-block;
+  p {
+    display: inline-block;
+  }
+  #chat-name {
+    display: inline-block;
+    width:70%;
+  }
 }
 
 .chat-message {
