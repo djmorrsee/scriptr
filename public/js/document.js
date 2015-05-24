@@ -56,8 +56,13 @@ ScriptrDocument.prototype.EditText = function (text) {
 
   this.SetText(new_text);
 
-  this.textBox[0].selectionStart = cursor_pos;
-  this.textBox[0].selectionEnd = cursor_pos;
+  if (cursor_pos < text.position) {
+    this.textBox[0].selectionStart = cursor_pos;
+    this.textBox[0].selectionEnd = cursor_pos;
+  } else {
+    this.textBox[0].selectionStart = cursor_pos + text.chars.length;
+    this.textBox[0].selectionEnd = cursor_pos + text.chars.length;  
+  }
 }
 
 // Takes in normal string, formats to html
