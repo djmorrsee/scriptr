@@ -42,7 +42,7 @@ ScriptrDocument.prototype.PrintDocument = function () {
 
 // Takes in normal string, formats to html
 ScriptrDocument.prototype.SetText = function (text) {
-  console.log(this.textBox.selectionStart);
+  console.log($(this.textBox).selectionStart);
   this.textBox.val(text);
   this.textBoxValue = text;
 };
