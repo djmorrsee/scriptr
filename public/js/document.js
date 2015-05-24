@@ -1,7 +1,7 @@
 var ScriptrDocument = function (change_callback) {
   var self = this
 
-  this.textBox = $("#document-box");
+  this.textBox = $("#document-pane");
   this.textBoxValue = StripHTML(this.textBox.html());
 
   this.change_callback

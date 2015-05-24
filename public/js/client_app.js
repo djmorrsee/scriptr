@@ -1,7 +1,9 @@
 var Scriptr = function () {
 	this.socket = new ScriptrSocket('127.0.0.1', '3555');
 	//~ this.socket = new ScriptrSocket('djmorrsee.me', '3555');
+
 	this.doc
+	this.chat
 }
 
 var scriptr = new Scriptr()
@@ -9,7 +11,6 @@ $(document).ready (function () {
 
 	// Helper Function for Linking Socket and Document
 	var SendEdit = function(changes) {
-		console.log(changes)
 		if (changes) {
 			var hash = XXH(scriptr.doc.textBoxValue, 0xABCD).toString(16);
 			scriptr.socket.SendEditMessage(changes.range[0], changes.additive, changes.range[1] - changes.range[0] + 1, changes.chars, hash);
@@ -18,6 +19,7 @@ $(document).ready (function () {
 
 	// Helper Callback
 	scriptr.doc = new ScriptrDocument(SendEdit);
+	scriptr.chat = new ChatClient();
 
 	// Parse Messages from Server
 	scriptr.socket.socket.onmessage = function (message) {
@@ -38,10 +40,14 @@ $(document).ready (function () {
 			scriptr.doc.SetText(new_text);
 			break;
 		case 2: // Chat
+			scriptr.chat.ReceiveMessage(data.body);
 			break;
 
 		}
 	};
+
+	// Chat
+
 });
 
 // Close Socket on Unload

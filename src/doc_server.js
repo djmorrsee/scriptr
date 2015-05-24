@@ -55,7 +55,9 @@ function DocumentServer (_port) {
 	};
 
 	var HandleChatMessage = function(message) {
-
+		connections.forEach(function (conn) {
+			conn.send(JSON.stringify(message))
+		});
 	};
 
 	this.doc_server = new wss({port:_port});
@@ -87,6 +89,7 @@ function DocumentServer (_port) {
 				HandleEditMessage(obj, socket)
 				break;
 			case 2: // Chat
+				HandleChatMessage(obj)
 				break;
 			}
 

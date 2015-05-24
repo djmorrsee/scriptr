@@ -35,6 +35,7 @@
 
 		<!-- Page Scripts -->
 		<script src="js/xxhash.min.lmd.js"></script>
+		<script src="js/chat.js"></script>
 		<script src="js/changes.js"></script>
 		<script src="js/socket.js"></script>
 		<script src="js/text_formatter.js"></script>
@@ -49,49 +50,41 @@
 		<div class="container-fluid">
 
 			<div class="row" id="header-row">
-				<h1 align="left">Scriptr</h1>
+				<div id="header-box">
+					<h1>Scriptr</h1>
+				</div>
 			</div>
 
 			<div class="row" id="content-row">
 
 				<!-- Filler -->
+				<div class="col-xs-1" id="control-box">
+					<div id="control-pane">
+						<img src="http://placehold.it/25x25">
+					</div>
+				</div>
 
 				<!-- Main Content -->
-				<div class="col-xs-10" id="main-body">
-					<h3 align="center">Doc Title</h3>
-					<div contenteditable id="document-box"><div><br></div></div>
+				<div class="col-xs-9" id="main-box">
+
+					<div contenteditable id="document-pane"><div><br></div></div>
+
 				</div>
 
 				<!-- Side Bar -->
-				<div class="col-xs-2" id="side-bar">
+				<div class="col-xs-2" id="side-box" align="center">
 
-					<div class="row" id="stuff-box" align="center">
-						<h1 align="center">Stuff</h1>
+					<div class="row" id="chat-pane">
+						<div id="chat-window" align="left">
 
-						<button type="button" class="btn btn-default">New</button>
-						<button type="button" class="btn btn-default">Save</button>
-						<button type="button" class="btn btn-default">Download</button>
-					</div>
-
-					<!-- Chat Box -->
-					<div class="row" id="chat-box">
-
-						<h1 align="center">Chat</h1>
-
-						<div>Sup</div>
-						<div class="other">Hey</div>
-						<div>Want a Cookie?</div>
-						<div class="other">Yeah</div>
-
+						</div>
+						<input id="chat-input"/>
+						<div>Name</div>
+						<input id="chat-name"/>
 					</div>
 
 				</div>
-
 			</div>
-
 		</div>
-
-
 	</body>
-
 </html>

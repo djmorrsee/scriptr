@@ -1,15 +1,25 @@
 var ScriptrSocket = function (host, port) {
 	this.socket = new WebSocket('ws://' + host + ':' + port);
-	
+
 	this.socket.onopen = function () {
 		console.log('connected');
 	};
-	
-	
+
+
 };
 
-ScriptrSocket.prototype.SendChatMessage = function(message) {
-	
+ScriptrSocket.prototype.SendChatMessage = function(user, message) {
+	var body = new Object();
+	body.user = user
+	body.message = message
+
+	var obj = new Object();
+
+	obj.type = 2
+	obj.body = body
+
+	this.socket.send(JSON.stringify(obj));
+
 };
 
 ScriptrSocket.prototype.SendEditMessage = function(position, additive, count, chars, hash) {
@@ -19,7 +29,7 @@ ScriptrSocket.prototype.SendEditMessage = function(position, additive, count, ch
 	}
 
 	var body = new Object();
-	
+
 	body.position = position;
 	body.additive = additive > 0 ? 1 : 0;
 	body.count = count;
@@ -27,10 +37,10 @@ ScriptrSocket.prototype.SendEditMessage = function(position, additive, count, ch
 	body.hash = hash;
 
 	var obj = new Object();
-	
+
 	obj.type = 1
 	obj.body = body
-	
+
 	this.socket.send(JSON.stringify(obj));
 
 };
@@ -38,4 +48,3 @@ ScriptrSocket.prototype.SendEditMessage = function(position, additive, count, ch
 ScriptrSocket.prototype.CloseSocket = function () {
 	this.socket.close(1000);
 }
-
