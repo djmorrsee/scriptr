@@ -61,15 +61,19 @@ ScriptrDocument.prototype.EditText = function (text) {
     this.textBox[0].selectionEnd = cursor_pos;
   } else {
     this.textBox[0].selectionStart = cursor_pos + text.chars.length;
-    this.textBox[0].selectionEnd = cursor_pos + text.chars.length;  
+    this.textBox[0].selectionEnd = cursor_pos + text.chars.length;
   }
 }
 
 // Takes in normal string, formats to html
 ScriptrDocument.prototype.SetText = function (text) {
+  var cursor_pos = this.textBox[0].selectionStart;
 
   this.textBox.val(text);
   this.textBoxValue = text;
+
+  this.textBox[0].selectionStart = cursor_pos;
+  this.textBox[0].selectionEnd = cursor_pos;
 };
 
 ScriptrDocument.prototype.TextChanged = function () {
