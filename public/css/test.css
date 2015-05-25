@@ -21,14 +21,8 @@ html {
   padding: 0; }
 
 #header-box {
-  -webkit-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.85);
-  -moz-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.85);
-  box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.85);
-  -webkit-border-radius: 0em 0em 0.25em 0.25em;
-  -moz-border-radius: 0em 0em 0.25em 0.25em;
-  border-radius: 0em 0em 0.25em 0.25em;
-  border-bottom: 1px solid black;
-  background-color: #87CEFA;
+  border-bottom: 1px solid #9a9a9a;
+  background-color: #03a2fe;
   margin: 0;
   padding: 0; }
   #header-box h1 {
@@ -46,33 +40,27 @@ html {
   padding: 0; }
 
 #control-pane {
-  -webkit-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.85);
-  -moz-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.85);
-  box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.85);
-  -webkit-border-radius: 0 0.25em 0.25em 0em;
-  -moz-border-radius: 0 0.25em 0.25em 0em;
-  border-radius: 0 0.25em 0.25em 0em;
-  border: 1px solid black;
+  -webkit-border-radius: 0 1em 1em 0em;
+  -moz-border-radius: 0 1em 1em 0em;
+  border-radius: 0 1em 1em 0em;
+  border: 1px solid #9a9a9a;
   border-left: none;
   padding: 1em;
-  background-color: #87CEFA;
+  background-color: #03a2fe;
   height: 60ex; }
 
 #main-box {
-  padding: 0;
+  padding: 5;
   margin: 0; }
 
 #document-container {
   margin: 0 0.5em; }
 
 #document-pane, #document-display {
-  -webkit-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.85);
-  -moz-box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.85);
-  box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.85);
-  -webkit-border-radius: 0.25em 0.25em 0.25em 0.25em;
-  -moz-border-radius: 0.25em 0.25em 0.25em 0.25em;
-  border-radius: 0.25em 0.25em 0.25em 0.25em;
-  border: 1px solid black;
+  -webkit-border-radius: 1em 1em 1em 1em;
+  -moz-border-radius: 1em 1em 1em 1em;
+  border-radius: 1em 1em 1em 1em;
+  border: 1px solid #9a9a9a;
   white-space: pre;
   word-wrap: normal;
   overflow: auto;
@@ -81,44 +69,59 @@ html {
   width: 100%;
   height: 60ex;
   resize: none; }
+  #document-pane:focus, #document-display:focus {
+    outline: none !important;
+    border: 2px solid #9a9a9a; }
 
 #side-box {
   padding: 0;
   margin: 0; }
 
 #chat-pane {
-  -webkit-box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.85);
-  -moz-box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.85);
-  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.85);
-  -webkit-border-radius: 0.25em 0 0 0.25em;
-  -moz-border-radius: 0.25em 0 0 0.25em;
-  border-radius: 0.25em 0 0 0.25em;
-  border: 1px solid black;
+  -webkit-border-radius: 1em 0 0 1em;
+  -moz-border-radius: 1em 0 0 1em;
+  border-radius: 1em 0 0 1em;
+  border: 1px solid #9a9a9a;
   border-right: none;
   height: 60ex;
-  background-color: #87CEFA;
+  background-color: #03a2fe;
   padding: 0;
   margin: 0; }
 
 #chat-window {
-  -webkit-border-radius: 0.25em 0.25em 0.25em 0.25em;
-  -moz-border-radius: 0.25em 0.25em 0.25em 0.25em;
-  border-radius: 0.25em 0.25em 0.25em 0.25em;
-  -webkit-box-shadow: inset 1px 1px 3px 1px rgba(0, 0, 0, 0.85);
-  -moz-box-shadow: inset 1px 1px 3px 1px rgba(0, 0, 0, 0.85);
-  box-shadow: inset 1px 1px 3px 1px rgba(0, 0, 0, 0.85);
+  -webkit-border-radius: 0.5em 0.5em 0 0;
+  -moz-border-radius: 0.5em 0.5em 0 0;
+  border-radius: 0.5em 0.5em 0 0;
+  border: 1px solid #6f6f6f;
   margin: 0.5em 0.5em 0 0.5em;
   overflow: auto;
-  height: 30ex;
+  word-wrap: break-word;
+  height: 34ex;
   background-color: #eee; }
 
-#chat-input {
-  -webkit-border-radius: 0.25em 0.25em 0.25em 0.25em;
-  -moz-border-radius: 0.25em 0.25em 0.25em 0.25em;
-  border-radius: 0.25em 0.25em 0.25em 0.25em;
-  border: 1px solid black;
-  margin: 0.5em 0.5em 0 0.5em;
-  width: 70%; }
+#joined-users-box {
+  -webkit-border-radius: 1em 0 0 0;
+  -moz-border-radius: 1em 0 0 0;
+  border-radius: 1em 0 0 0;
+  border: 1px solid #9a9a9a;
+  border-right: none;
+  border-top: none;
+  border-left: none;
+  padding: 1em;
+  background-color: #03a2fe;
+  height: 15ex; }
+
+#chat-input-box {
+  margin: -0.1em 0.5em 0 0.5em; }
+  #chat-input-box #chat-input {
+    -webkit-border-radius: 0 0 0.5em 0.5em;
+    -moz-border-radius: 0 0 0.5em 0.5em;
+    border-radius: 0 0 0.5em 0.5em;
+    border: 1px solid #9a9a9a;
+    width: 100%; }
+    #chat-input-box #chat-input:focus {
+      outline: none !important;
+      border: 2px solid #9a9a9a; }
 
 #chat-name-box {
   margin: 0.5em 0.5em 0 0.5em;
@@ -129,6 +132,9 @@ html {
   #chat-name-box #chat-name {
     display: inline-block;
     width: 70%; }
+    #chat-name-box #chat-name:focus {
+      outline: none !important;
+      border: 2px solid #9a9a9a; }
 
 .chat-message {
   padding-left: 0.25em; }
