@@ -1,21 +1,21 @@
 {
   "name": "scriptr",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A collaborative code editor",
   "main": "app.js",
   "directories": {
     "test": "test"
   },
   "dependencies": {
-    "node-sass-middleware": "^0.7.0",
-    "express": "^4.12.3",
-    "xxhashjs": "^0.1.1",
-    "ws": "^0.7.2",
-    "assert": "^1.3.0"
+    "node-sass-middleware": "0.7.x",
+    "express": "4.12.x",
+    "xxhashjs": "0.1.x",
+    "ws": "0.7.x",
+    "assert": "1.3.x"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
