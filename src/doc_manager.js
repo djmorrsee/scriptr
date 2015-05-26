@@ -18,7 +18,7 @@ DocumentBuffer.prototype.AddChars = function (pos, chars) {
 	})
 
 	if(!valid) {
-		return false;
+		throw new Error('Invalid Char, Add to Filter if needed!')
 	}
 
 	// Normalize to avoid negative range issues
@@ -40,7 +40,7 @@ DocumentBuffer.prototype.RemoveChars = function (start, count) {
 
 DocumentBuffer.prototype._ValidChar = function (char) {
 	var val = char.charCodeAt(0);
-	return (32 <= val && val <= 126) || val == 10;
+	return (32 <= val && val <= 126) || val === 10 || val === 9;
 };
 
 DocumentBuffer.prototype.SaveBufferToFile = function(filename) {
