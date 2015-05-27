@@ -2,22 +2,12 @@ var fs = require ('fs');
 var path = require('path');
 
 var sass_middleware = require('node-sass-middleware')
+var mustache_middleware = require('mustache-express')
 
-var routeRoot = require('./pages/root.js');
-var routeLoad = require('./pages/load.js');
-
-var doc_server = require('./src/doc_server.js')(3555); // Initializes Server
-
-var server_manager = require('./src/doc_server_manager.js')()
-
-console.log(server_manager);
-
+var server_manager = new (require('./src/doc_server_manager.js'))()
 
 var express = require('express');
 var app = express();
-
-// Public Folder
-app.use(express.static(__dirname + '/public'));
 
 // Express Middleware
 app.use(sass_middleware({
@@ -26,23 +16,42 @@ app.use(sass_middleware({
 	debug:true
 }));
 
+app.engine('html', mustache_middleware());
+app.set('view engine', 'html');
+app.set('views', __dirname + '/public/html');
+
+// Public Folder
+app.use(express.static(__dirname + '/public'));
 
 // Routing
-app.get('', routeRoot);
-app.get('/:key', routeLoad);
+app.get('/', function(req, res) {
+	var port = server_manager.CreateServer();
+	res.render('index', {document_port:port})
+});
 
+app.get('/:key', function(req, res) {
+	var key = req.params.key
+	if (key === 'favicon.ico') {
+		res.end()
+		return;
+	}
+	var active_ports = server_manager.GetActivePorts();
+
+	if (active_ports.indexOf(key) < 0) {
+		server_manager.LoadServer(key);
+	}
+
+	res.render('index', { document_port:key })
+});
 
 // Program Start
 var http_server = app.listen(3000, function () {
 	console.log('Listening...');
 });
 
-
 // Program Exit
 process.on('exit', function () {
 	console.log('close from exit')
-	console.log(doc_server.document.buffer.join(''))
-	doc_server.doc_server.close()
 
 }).on('SIGINT', function () {
 	console.log('SIGINT')

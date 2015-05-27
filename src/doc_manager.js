@@ -1,5 +1,9 @@
-function DocumentBuffer () {
-	this.buffer = this.LoadBufferFromFile('buffer-pers.txt');
+function DocumentBuffer (filename) {
+	if(filename) {
+		this.buffer = this.LoadBufferFromFile(filename);
+	} else {
+		this.buffer = []
+	}
 	return this
 }
 
@@ -45,15 +49,20 @@ DocumentBuffer.prototype._ValidChar = function (char) {
 
 DocumentBuffer.prototype.SaveBufferToFile = function(filename) {
 	var fs = require('fs')
+	var path = require('path')
+
+	require('mkdirp').sync(path.dirname(filename))
+
 	fs.writeFile(filename, this.GetBufferAsString(), function(err) {
 		if(err) {
-			console.log('Error writing to file ' + filename);
+			console.log('Error writing to file ' + filename + err);
 		}
 	});
 };
 
 DocumentBuffer.prototype.LoadBufferFromFile = function(filename) {
-	return [];
+	var fs = require('fs')
+	return fs.readFileSync(filename).toString().split('');
 }
 
 DocumentBuffer.prototype.GetBufferAsString = function () {

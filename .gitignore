@@ -4,6 +4,7 @@ __pycache__/
 *.py[cod]
 .env
 
+saved_buffers/
 node_modules/
 
 # C extensions

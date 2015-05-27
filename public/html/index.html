@@ -33,7 +33,12 @@
 		<link href="css/test.css" rel="stylesheet">
 
 
+
 		<!-- Page Scripts -->
+		<script type="text/javascript">
+			var DOCUMENT_PORT = {{document_port}};
+		</script>
+
 		<script src="js/xxhash.min.lmd.js"></script>
 		<script src="js/chat.js"></script>
 		<script src="js/changes.js"></script>
@@ -52,6 +57,7 @@
 			<div class="row" id="header-row">
 				<div id="header-box">
 					<h1>Scriptr</h1>
+					<h3>Doc ID: {{document_port}}</h3>
 				</div>
 			</div>
 
@@ -59,9 +65,12 @@
 
 				<!-- Controls -->
 				<div class="col-xs-1" id="control-box">
-					<div id="control-pane">
-						There will be stuff here
-					</div>
+					<ul id="control-pane">
+
+						<li><span><input id="new-button" type="image" src="images/NewFile.png" /></span></li>
+						<li><span><input id="save-button" type="image" src="images/SaveFile.png" /></span></li>
+						<li><span><input id="download-button" type="image" src="images/DownloadFile.png" /></span></li>
+					</ul>
 				</div>
 
 				<!-- Main Content -->
@@ -74,17 +83,34 @@
 				</div>
 
 				<!-- Chat Box -->
-				<div class="col-xs-2" id="side-box" align="center">
-					<div id="chat-pane" align="right">
-						<div id="joined-users-box" align="left">
-							<p>There will be user names here</p>
+				<div class="col-xs-2" id="side-box">
+					<div id="chat-pane">
+						<div id="joined-users-box">
+							<ul>
+								<li><span>User</span></li>
+								<li><span>User</span></li>
+								<li><span>User</span></li>
+
+									<li><span>User</span></li>
+									<li><span>User</span></li>
+									<li><span>User</span></li>
+
+										<li><span>User</span></li>
+										<li><span>User</span></li>
+										<li><span>User</span></li>
+
+											<li><span>User</span></li>
+											<li><span>User</span></li>
+											<li><span>User</span></li>
+							</ul>
+
 						</div>
 						<div id="chat-name-box">
 							<p>Name</p>
 							<input id="chat-name"/>
 						</div>
-						<div id="chat-window" align="left"></div>
-						<div id="chat-input-box" align="right">
+						<div id="chat-window"></div>
+						<div id="chat-input-box">
 								<input id="chat-input"/>
 						</div>
 					</div>

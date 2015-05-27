@@ -7,11 +7,13 @@
     "test": "test"
   },
   "dependencies": {
-    "node-sass-middleware": "0.7.x",
+    "assert": "1.3.x",
     "express": "4.12.x",
-    "xxhashjs": "0.1.x",
+    "mkdirp": "^0.5.1",
+    "mustache-express": "^1.2.1",
+    "node-sass-middleware": "0.7.x",
     "ws": "0.7.x",
-    "assert": "1.3.x"
+    "xxhashjs": "0.1.x"
   },
   "devDependencies": {},
   "scripts": {

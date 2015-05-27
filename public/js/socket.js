@@ -45,6 +45,14 @@ ScriptrSocket.prototype.SendEditMessage = function(position, additive, count, ch
 
 };
 
+ScriptrSocket.prototype.SendSaveMessage = function () {
+	// body...
+	var obj = new Object();
+	obj.type = 3; // Save
+	obj.body = {};
+	this.socket.send(JSON.stringify(obj));
+};
+
 ScriptrSocket.prototype.CloseSocket = function () {
 	this.socket.close(1000);
 }

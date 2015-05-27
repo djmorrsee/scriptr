@@ -1,13 +1,27 @@
 var Scriptr = function () {
-	this.socket = new ScriptrSocket('127.0.0.1', '3555');
-	// this.socket = new ScriptrSocket('djmorrsee.me', '3555');
+	this.socket = new ScriptrSocket('127.0.0.1', DOCUMENT_PORT);
+	// this.socket = new ScriptrSocket('djmorrsee.me', DOCUMENT_PORT);
 
 	this.doc
 	this.chat
 }
 
 var scriptr = new Scriptr()
+
+
 $(document).ready (function () {
+
+
+	var save_button = $('#save-button')
+	var new_button = $('#new-button')
+	var download_button = $('#download_button')
+
+	save_button.on('click', function() {
+		scriptr.socket.SendSaveMessage();
+	});
+	new_button.on('click', function () {
+		window.location.href = "/"
+	})
 
 	// Helper Function for Linking Socket and Document
 	var SendEdit = function(changes) {
@@ -38,9 +52,6 @@ $(document).ready (function () {
 
 		}
 	};
-
-	// Chat
-
 });
 
 // Close Socket on Unload

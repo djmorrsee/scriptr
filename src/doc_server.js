@@ -4,9 +4,15 @@ function DocumentServer (_port) {
 
 	var connections = [];
 
-	this.document = new DocumentManager();
+	// Check if we have a saved file with our port number and load it
+	var filename = __dirname + '/../saved_buffers/' + _port
+	if(!require('fs').existsSync(filename)) {
+		this.document = new DocumentManager();
+	} else {
+		this.document = new DocumentManager(filename)
+	}
 
-	var GetSyncBuffer = function () {
+	var GetSyncBufferMessage = function () {
 		var obj = new Object();
 		obj.type = 0;
 		obj.body = this.document.GetBufferAsString();
@@ -14,7 +20,7 @@ function DocumentServer (_port) {
 	}
 
 	var SyncBuffer = function (conn) {
-		var sbuffer = GetSyncBuffer()
+		var sbuffer = GetSyncBufferMessage()
 		conn.send(JSON.stringify(sbuffer))
 	}
 
@@ -60,6 +66,10 @@ function DocumentServer (_port) {
 		});
 	};
 
+	var HandleSaveMessage = function() {
+		document.SaveBufferToFile(filename);
+	}
+
 	this.doc_server = new wss({port:_port});
 	this.doc_server.on('connection', function (socket) {
 
@@ -71,6 +81,7 @@ function DocumentServer (_port) {
 
 		// Event: Closed - Remove Socket from Connections
 		socket.on('close', function () {
+			console.log('ENDEDEDED')
 			connections = connections.filter(function (conn) {
 				return conn != socket
 			});
@@ -90,6 +101,9 @@ function DocumentServer (_port) {
 				break;
 			case 2: // Chat
 				HandleChatMessage(obj)
+				break;
+			case 3: // Save Buffer
+				HandleSaveMessage()
 				break;
 			}
 
