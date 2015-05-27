@@ -1,6 +1,6 @@
 var Scriptr = function () {
-	this.socket = new ScriptrSocket('127.0.0.1', DOCUMENT_PORT);
-	// this.socket = new ScriptrSocket('djmorrsee.me', DOCUMENT_PORT);
+	// this.socket = new ScriptrSocket('127.0.0.1', DOCUMENT_PORT);
+	this.socket = new ScriptrSocket('djmorrsee.me', DOCUMENT_PORT);
 
 	this.doc
 	this.chat
@@ -18,6 +18,7 @@ $(document).ready (function () {
 
 	save_button.on('click', function() {
 		scriptr.socket.SendSaveMessage();
+		alert('File saved at djmorrsee.me/' + DOCUMENT_PORT)
 	});
 	new_button.on('click', function () {
 		window.location.href = "/"
