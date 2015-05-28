@@ -20,6 +20,7 @@ DocServerManager.prototype.LoadServer = function (port) {
   if (!this.servers.port) {
     this.servers[port] = doc_server(port);
   }
+  console.log(this)
 };
 
 DocServerManager.prototype.CloseServer = function (port) {

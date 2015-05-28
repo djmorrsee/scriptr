@@ -72,7 +72,6 @@ function DocumentServer (_port) {
 
 	this.doc_server = new wss({port:_port});
 	this.doc_server.on('connection', function (socket) {
-
 		// Sync Current Buffer (will need to special case this)
 		SyncBuffer(socket);
 
@@ -81,7 +80,6 @@ function DocumentServer (_port) {
 
 		// Event: Closed - Remove Socket from Connections
 		socket.on('close', function () {
-			console.log('ENDEDEDED')
 			connections = connections.filter(function (conn) {
 				return conn != socket
 			});

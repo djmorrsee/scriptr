@@ -1,6 +1,6 @@
 var Scriptr = function () {
-	// this.socket = new ScriptrSocket('127.0.0.1', DOCUMENT_PORT);
-	this.socket = new ScriptrSocket('djmorrsee.me', DOCUMENT_PORT);
+	this.socket = new ScriptrSocket('127.0.0.1', DOCUMENT_PORT);
+	// this.socket = new ScriptrSocket('djmorrsee.me', DOCUMENT_PORT);
 
 	this.doc
 	this.chat
