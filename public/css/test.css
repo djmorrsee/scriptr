@@ -105,8 +105,9 @@
 #user-box {
   height: 25%;
   padding: 0.5em;
-  overflow-y: auto;
-  position: relative; }
+  overflow: hidden;
+  position: relative;
+  font-size: 1vw; }
   #user-box h1 {
     font-size: 3vw;
     color: white;
