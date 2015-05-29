@@ -27,21 +27,20 @@ html {
   padding: 0;
   width: 100%; }
   #header-box h1 {
-    display: inline-block;
+    font-size: 3vw;
     color: white;
     margin: 0;
     padding: 0.25em; }
   #header-box h3 {
+    padding-left: 0.75em;
+    font-size: 1vw;
     color: white;
-    margin: 0;
-    padding: .25em;
-    display: inline-block;
-    float: right; }
+    margin: 0; }
 
 /* Content */
 #content-row {
   padding: 0;
-  margin: 1em 0; }
+  margin: 0 0; }
 
 #control-box {
   margin: 0;
@@ -53,31 +52,30 @@ html {
   border-radius: 0 1em 1em 0em;
   border: 1px solid #9a9a9a;
   border-left: none;
-  width: 100%;
   padding: 0;
-  margin: 0;
+  margin: auto;
   background-color: #03a2fe;
-  height: 60ex;
-  display: table; }
-  #control-pane img {
-    display: block;
-    width: 100%;
-    height: auto; }
+  width: 100%;
+  display: table;
+  overflow: hidden; }
   #control-pane li {
     display: table-row; }
     #control-pane li span {
-      color: white;
       display: table-cell;
-      vertical-align: middle; }
-    #control-pane li :first-child, #control-pane li :last-child {
-      height: 10ex; }
+      vertical-align: middle;
+      padding: 10%; }
+      #control-pane li span input {
+        display: block;
+        width: 100%;
+        margin-left: auto !important;
+        margin-right: auto !important; }
 
 #main-box {
-  padding: 5;
+  padding: 0 1em;
   margin: 0; }
 
 #document-container {
-  margin: 0 0.5em; }
+  margin: 0 0; }
 
 #document-pane, #document-display {
   -webkit-border-radius: 1em 1em 1em 1em;
@@ -87,7 +85,6 @@ html {
   white-space: pre;
   word-wrap: normal;
   overflow: auto;
-  padding: 1ex;
   color: black;
   width: 100%;
   height: 60ex;
@@ -106,32 +103,35 @@ html {
   border-radius: 1em 0 0 1em;
   border: 1px solid #9a9a9a;
   border-right: none;
-  height: 60ex;
   background-color: #03a2fe;
   padding: 0;
   margin: 0; }
+
+#joined-users-box {
+  border-bottom: 1px solid black;
+  margin: auto; }
+  #joined-users-box h1 {
+    margin: 0.5ex 0 0 0;
+    color: white; }
+
+#joined-users-list {
+  overflow-y: scroll;
+  max-height: 15ex; }
 
 #chat-window {
   -webkit-border-radius: 0.5em 0.5em 0 0;
   -moz-border-radius: 0.5em 0.5em 0 0;
   border-radius: 0.5em 0.5em 0 0;
-  border: 1px solid #6f6f6f;
+  border: 1px solid #9a9a9a;
   margin: 0.5em 0.5em 0 0.5em;
   overflow: auto;
   word-wrap: break-word;
-  height: 34ex;
+  min-height: 12ex;
+  max-height: 34ex;
   background-color: #eee; }
 
-#joined-users-box {
-  overflow: scroll;
-  overflow-x: hidden;
-  border-bottom: 1px solid black;
-  height: 15ex; }
-  #joined-users-box ul {
-    padding-left: 20px; }
-
 #chat-input-box {
-  margin: -0.1em 0.5em 0 0.5em; }
+  margin: 0 0.5em 0.5em 0.5em; }
   #chat-input-box #chat-input {
     -webkit-border-radius: 0 0 0.5em 0.5em;
     -moz-border-radius: 0 0 0.5em 0.5em;
@@ -142,14 +142,9 @@ html {
       outline: none !important;
       border: 2px solid #9a9a9a; }
 
-#chat-name-box {
-  margin: 0.5em 0.5em 0 0.5em;
-  width: 70%; }
-  #chat-name-box #chat-name {
-    width: 70%; }
-    #chat-name-box #chat-name:focus {
-      outline: none !important;
-      border: 2px solid #9a9a9a; }
+#chat-name-box #chat-name:focus {
+  outline: none !important;
+  border: 2px solid #9a9a9a; }
 
 .chat-message {
   padding-left: 0.25em; }

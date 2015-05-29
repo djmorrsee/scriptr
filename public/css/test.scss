@@ -1,4 +1,5 @@
 $page-color: #03a2fe;
+$border-color: #9a9a9a;
 $shadow-alpha-main: 0.85;
 
 
@@ -55,27 +56,26 @@ body {
 #header-box {
   //@include shadow(2px, 2px, 2px, 0px, $shadow-alpha-main);
   //@include rounded(0em, 0em, 1em, 1em);
-  border-bottom:1px solid #9a9a9a;
+  border-bottom:1px solid $border-color;
 
   background-color: $page-color;
 
   margin:0;
   padding:0;
   width:100%;
-  h1 {
-    display:inline-block;
 
+  h1 {
+    font-size: 3vw;
     color: white;
     margin:0;
     padding:0.25em;
   }
 
   h3 {
+    padding-left:0.75em;
+    font-size: 1vw;
     color:white;
     margin:0;
-    padding:.25em;
-    display:inline-block;
-    float:right;
   }
 }
 
@@ -83,7 +83,8 @@ body {
 #content-row {
   @extend .full-height;
 	padding:0;
-  margin:1em 0;
+  margin:0 0;
+
 
 }
 
@@ -97,33 +98,36 @@ body {
 #control-pane {
   //@include shadow(2px, 2px, 2px, 0px, $shadow-alpha-main);
   @include rounded(0, 1em, 0em, 1em);
-  border:1px solid #9a9a9a;
+
+  border:1px solid $border-color;
   border-left:none;
 
-  width:100%;
-
   padding:0;
-  margin:0;
+  margin:auto;
 
-  background-color: $page-color;
+  background-color:$page-color;
 
-  height:60ex;
+  width:100%;
   display:table;
-  img {
-    display:block;
-    width:100%;
-    height:auto;
-  }
+
+  overflow: hidden;
+
   li {
     display:table-row;
 
     span {
-      color:white;
       display:table-cell;
       vertical-align: middle;
+      padding:10%;
+      input {
+        display:block;
+        width:100%;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
     }
     :first-child, :last-child {
-      height:10ex;
+      // max-height:10ex;
     }
   }
 }
@@ -132,24 +136,23 @@ body {
 
 #main-box {
   @extend .full-height;
-	padding:5;
+	padding:0 1em;
 	margin:0;
 }
 
 #document-container {
-  margin:0 0.5em;
+  margin:0 0;
 }
 
 #document-pane {
   //@include shadow(1px, 1px, 3px, 0px, $shadow-alpha-main);
   @include rounded(1em, 1em, 1em, 1em);
-  border:1px solid #9a9a9a;
+  border:1px solid $border-color;
 
   white-space: pre;
   word-wrap: normal;
 
   overflow:auto;
-  padding:1ex;
 
   color:black;
   width:100%;
@@ -176,11 +179,8 @@ body {
 #chat-pane {
   //@include shadow(1px, 1px, 3px, 1px, $shadow-alpha-main);
   @include rounded(1em, 0, 1em, 0);
-  border:1px solid #9a9a9a;
+  border:1px solid $border-color;
   border-right:none;
-
-
-  height:60ex;
 
   background-color: $page-color;
 
@@ -188,55 +188,57 @@ body {
   margin:0;
 }
 
+#joined-users-box {
+  border-bottom: 1px solid black;
+  margin: auto;
+  h1 {
+    margin:0.5ex 0 0 0;
+    color:white;
+  }
+
+}
+
+#joined-users-list {
+  overflow-y: scroll;
+  max-height:15ex;
+}
+
 #chat-window {
   @include rounded(0.5em, 0.5em, 0, 0);
   //@include in-shadow(1px, 1px, 3px, 1px, $shadow-alpha-main);
-  border:1px solid #6f6f6f;
+  border:1px solid $border-color;
 
   margin:0.5em 0.5em 0 0.5em;
   overflow: auto;
   word-wrap: break-word;
 
-  height:34ex;
+  min-height:12ex;
+  max-height:34ex;
 
   background-color: #eee;
 
 }
-#joined-users-box {
-  overflow: scroll;
-  overflow-x: hidden;
-  border-bottom: 1px solid black;
-  height:15ex;
-
-  ul {
-    padding-left:20px;
-  }
-}
 
 #chat-input-box {
- margin: -0.1em 0.5em 0 0.5em;
-  //display: inline-block;
-    #chat-input {
-    //display: inline-block;
+ margin: 0 0.5em 0.5em 0.5em;
+
+  #chat-input {
     @include rounded(0, 0, 0.5em, 0.5em);
-    border:1px solid #9a9a9a;
+    border:1px solid $border-color;
     width:100%;
     &:focus {
     	outline: none !important;
-  		border:2px solid #9a9a9a;
+  		border:2px solid $border-color;
   	}
   }
 }
 
 #chat-name-box {
-  margin:0.5em 0.5em 0 0.5em;
-  width:70%;
 
   #chat-name {
-    width:70%;
     &:focus {
       outline: none !important;
-    	border:2px solid #9a9a9a;
+    	border:2px solid $border-color;
     }
   }
 }
