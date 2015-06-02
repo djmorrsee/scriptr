@@ -1,6 +1,7 @@
-.full-height, html, body, .container-fluid, #control-col, #side-col {
+.full-height, html, body, .container-fluid, #control-col, #control-pane, #document-col, #side-col {
   height: 100%;
-  min-height: 100%; }
+  min-height: 100%;
+  max-height: 100%; }
 
 .container-fluid {
   padding: 0;
@@ -15,17 +16,19 @@
   border-bottom: 1px solid #9a9a9a;
   background-color: #03a2fe;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  overflow: hidden; }
   #header-box h1 {
-    font-size: 4vw;
+    float: left;
+    font-size: 3vw;
     color: white;
     margin: 0;
     padding: 0.25em; }
   #header-box h3 {
-    padding-left: 0.75em;
     font-size: 2vw;
+    float: right;
     color: white;
-    margin: 0; }
+    margin: 0.25em 0.25em 0 0; }
 
 /* Content */
 #content-row {
@@ -47,8 +50,7 @@
   background-color: #03a2fe;
   width: 100%;
   height: 100%;
-  display: table;
-  overflow: hidden; }
+  display: table; }
   #control-pane li {
     display: table-row; }
     #control-pane li span {
@@ -75,6 +77,10 @@
   -moz-border-radius: 1em 1em 1em 1em;
   border-radius: 1em 1em 1em 1em;
   border: 1px solid #9a9a9a;
+  -moz-tab-size: 2;
+  tab-size: 2;
+  font-family: monospace;
+  font-size: 1.25vw;
   white-space: pre;
   word-wrap: normal;
   padding: 1em;
@@ -103,23 +109,43 @@
   margin: 0; }
 
 #user-box {
-  height: 25%;
-  padding: 0.5em;
+  height: 35%;
   overflow: hidden;
   position: relative;
-  font-size: 1vw; }
+  padding: 0;
+  margin: 0; }
   #user-box h1 {
     font-size: 3vw;
     color: white;
     padding: 0;
-    margin: 0; }
+    margin: 0;
+    text-align: center; }
+
+#name-box {
+  overflow: hidden; }
+  #name-box p {
+    width: 35%;
+    margin: 0;
+    padding: 2px;
+    float: left;
+    font-size: 1.25vw;
+    text-align: right; }
+  #name-box input {
+    width: 65%;
+    float: right;
+    border: 1px solid #9a9a9a;
+    font-size: 1.25vw; }
 
 #user-list {
-  height: calc(100% - 40px);
+  padding-left: 0.5em;
+  height: 75%;
   overflow-y: auto; }
+  #user-list .user {
+    font-size: 1.75vw;
+    color: white; }
 
 #chat-box {
-  height: 75%; }
+  height: 65%; }
 
 #chat-window {
   -webkit-border-radius: 1em 0 0 0;

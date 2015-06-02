@@ -1,12 +1,14 @@
 var ScriptrDocument = function (change_callback) {
+  // Close this
   var self = this
 
-  this.textBox = $("#document-pane");
-  this.textBoxValue = this.textBox.val();
+  self.textBox = $("#document-textarea");
+  self.textBoxValue = self.textBox.val();
 
-  this.change_callback
+  self.change_callback
 
-  this.textBox.keydown(function(e) {
+  // Intentionally Using 'this'
+  self.textBox.keydown(function(e) {
     if (e.keyCode === 9) {
       var start = this.selectionStart;
       var end = this.selectionEnd;
@@ -21,7 +23,8 @@ var ScriptrDocument = function (change_callback) {
 
     }
   })
-  this.textBox.on('change keyup paste', function (e) {
+
+  self.textBox.on('change keyup paste', function (e) {
     if(e.keyCode == 16 || e.keyCode == 17 || e.keyCode == 18)
       return
 
@@ -30,7 +33,7 @@ var ScriptrDocument = function (change_callback) {
 
   })
 
-  this.textBox.on('focus', function(e){
+  self.textBox.on('focus', function(e){
   });
 
 };
@@ -67,6 +70,7 @@ ScriptrDocument.prototype.EditText = function (text) {
 
 // Takes in normal string, formats to html
 ScriptrDocument.prototype.SetText = function (text) {
+
   var cursor_pos = this.textBox[0].selectionStart;
 
   this.textBox.val(text);
