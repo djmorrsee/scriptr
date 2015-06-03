@@ -2,7 +2,11 @@ var ScriptrSocket = function (host, port) {
 	this.socket = new WebSocket('ws://' + host + ':' + port);
 
 	this.socket.onopen = function () {
-		console.log('connected');
+		// Send AK and username
+		var obj = new Object();
+		obj.type = 0;
+		obj.body = $('#chat-name').val()
+		this.send(JSON.stringify(obj));
 	};
 };
 

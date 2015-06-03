@@ -37,7 +37,7 @@ var ChatClient = function () {
     self.Name = val
 
     // Send over Wire
-
+    scriptr.socket.SendNameChange(self.Name);
   })
 
   // HTML Embedding for Chat Messages
@@ -67,6 +67,18 @@ var ChatClient = function () {
       self.ChatField.focus();
     }
   });
+};
+
+ChatClient.prototype.EditUserList = function (users) {
+  var pre = '<div class="user">- '
+  var post = '<\/div>'
+  var list = $('#other-users')
+
+  var results = ''
+  users.forEach(function (e) {
+    results += pre + e + post
+  })
+  list.html(results);
 };
 
 ChatClient.prototype.ReceiveMessage = function (message) {

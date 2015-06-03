@@ -32,10 +32,6 @@ $(document).ready (function () {
 		}
 	};
 
-	var SendNameChange = function(new_name) {
-		scriptr.socket
-	}
-
 	// Helper Callback
 	scriptr.doc = new ScriptrDocument(SendEdit);
 	scriptr.chat = new ChatClient();
@@ -54,7 +50,13 @@ $(document).ready (function () {
 		case 2: // Chat
 			scriptr.chat.ReceiveMessage(data.body);
 			break;
+		case 3: // Save
+			break;
 		case 4: // Name Change
+			break;
+		case 5: // Name Sync
+			scriptr.chat.EditUserList(data.body)
+			break;
 
 		}
 	};

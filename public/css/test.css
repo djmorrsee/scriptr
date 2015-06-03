@@ -115,7 +115,7 @@
   padding: 0;
   margin: 0; }
   #user-box h1 {
-    font-size: 3vw;
+    font-size: 2vw;
     color: white;
     padding: 0;
     margin: 0;
@@ -126,15 +126,15 @@
   #name-box p {
     width: 35%;
     margin: 0;
-    padding: 2px;
+    padding: 2px 4px 2px 0;
     float: left;
-    font-size: 1.25vw;
+    font-size: 1vw;
     text-align: right; }
   #name-box input {
     width: 65%;
     float: right;
     border: 1px solid #9a9a9a;
-    font-size: 1.25vw; }
+    font-size: 1vw; }
 
 #user-list {
   padding-left: 0.5em;

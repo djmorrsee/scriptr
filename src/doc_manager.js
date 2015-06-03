@@ -29,7 +29,6 @@ DocumentBuffer.prototype.AddChars = function (pos, chars) {
 	pos = pos < 0 ? 0 : pos;
 
 	chars.split('').forEach(function(char) {
-		console.log(char);
 		buff.splice(pos++, 0, char);
 	});
 	return true;
