@@ -1,8 +1,14 @@
 function DocumentServer (_port) {
+
+	// Closure around this
+	var self = this;
+
+	// Load The Document Manager and Server
 	var DocumentManager = require('./doc_manager.js')
 	var wss = require('ws').Server
 
 	var connections = [];
+	// var connections = new Object();
 
 	// Check if we have a saved file with our port number and load it
 	var filename = __dirname + '/../saved_buffers/' + _port
@@ -70,8 +76,48 @@ function DocumentServer (_port) {
 		document.SaveBufferToFile(filename);
 	}
 
-	this.doc_server = new wss({port:_port});
-	this.doc_server.on('connection', function (socket) {
+
+	var HandleNewConnection = function(conn) {
+		conn.on('message', function(message) {
+			var parsed_message = JSON.parse(message);
+			var message_type = parsed_message.type;
+
+			switch (type) {
+				case 0: // Initial Connection Message
+					var user_name = parsed_message.body;
+					SyncBuffer(conn);
+					connections.user_name = socket;
+					break;
+				case 1: // Edit
+
+					break;
+				case 2: // Sync
+
+					break;
+				case 3: // Save
+
+					break;
+				case 4: // Name Change
+
+					break;
+
+				case 5: // End of Connection
+
+					break;
+				default:
+
+			}
+		})
+
+		conn.on('close', function () {
+			delete connections.user_name;
+		})
+	}
+
+	self.doc_server = new wss({port:_port});
+	self.doc_server.on('connection', function (socket) {
+		console.log(socket.upgradeReq);
+
 		// Sync Current Buffer (will need to special case this)
 		SyncBuffer(socket);
 
@@ -80,6 +126,10 @@ function DocumentServer (_port) {
 
 		// Event: Closed - Remove Socket from Connections
 		socket.on('close', function () {
+			// Broadcast user disconnect
+
+
+			// Remove from list of connections
 			connections = connections.filter(function (conn) {
 				return conn != socket
 			});

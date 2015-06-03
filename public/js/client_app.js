@@ -1,7 +1,7 @@
 var Scriptr = function () {
 
-	// this.socket = new ScriptrSocket('127.0.0.1', DOCUMENT_PORT);
-	this.socket = new ScriptrSocket('djmorrsee.me', DOCUMENT_PORT);
+	this.socket = new ScriptrSocket('127.0.0.1', DOCUMENT_PORT);
+	// this.socket = new ScriptrSocket('djmorrsee.me', DOCUMENT_PORT);
 
 	this.doc
 	this.chat
@@ -32,6 +32,10 @@ $(document).ready (function () {
 		}
 	};
 
+	var SendNameChange = function(new_name) {
+		scriptr.socket
+	}
+
 	// Helper Callback
 	scriptr.doc = new ScriptrDocument(SendEdit);
 	scriptr.chat = new ChatClient();
@@ -50,6 +54,7 @@ $(document).ready (function () {
 		case 2: // Chat
 			scriptr.chat.ReceiveMessage(data.body);
 			break;
+		case 4: // Name Change
 
 		}
 	};

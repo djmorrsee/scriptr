@@ -9,7 +9,7 @@ var server_manager = new (require('./src/doc_server_manager.js'))()
 var express = require('express');
 var app = express();
 
-var listen_port = 80; // 80 for prod, 3000 for test
+var listen_port = 3000; // 80 for prod, 3000 for test
 
 // Express Middleware
 app.use(sass_middleware({

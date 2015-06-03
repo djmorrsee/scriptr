@@ -4,8 +4,6 @@ var ScriptrSocket = function (host, port) {
 	this.socket.onopen = function () {
 		console.log('connected');
 	};
-
-
 };
 
 ScriptrSocket.prototype.SendChatMessage = function(user, message) {
@@ -50,6 +48,14 @@ ScriptrSocket.prototype.SendSaveMessage = function () {
 	var obj = new Object();
 	obj.type = 3; // Save
 	obj.body = {};
+	this.socket.send(JSON.stringify(obj));
+};
+
+ScriptrSocket.prototype.SendNameChange = function (new_name) {
+	// body...
+	var obj = new Object();
+	obj.type = 4; // Name Change
+	obj.body = new_name;
 	this.socket.send(JSON.stringify(obj));
 };
 
