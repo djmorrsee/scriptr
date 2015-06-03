@@ -116,7 +116,7 @@ function DocumentServer (_port) {
 
 	self.doc_server = new wss({port:_port});
 	self.doc_server.on('connection', function (socket) {
-		console.log(socket.upgradeReq);
+		console.log(socket);
 
 		// Sync Current Buffer (will need to special case this)
 		SyncBuffer(socket);
